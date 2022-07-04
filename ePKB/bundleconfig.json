@@ -1,0 +1,42 @@
+[
+  {
+    "outputFileName": "Bundle/bundle.css",
+    "inputFiles": [
+      "SiteData/core/**/*.css",
+      "SiteData/scripts/**/*.css",
+      "SiteData/app/**/*.css"
+    ]
+  },
+  {
+    "outputFileName": "Bundle/bundle.js",
+    "inputFiles": [
+      "SiteData/core/**/*.js",
+      "SiteData/scripts/**/*.js",
+      "SiteData/app/**/*.js"
+    ]
+  },
+  {
+    "outputFileName": "Bundle/guest.css",
+    "inputFiles": [
+      "Guest/**/*.css"
+    ]
+  },
+  {
+    "outputFileName": "Bundle/guest.js",
+    "inputFiles": [
+      "Guest/**/*.js"
+    ]
+  }
+  //{
+  //  "outputFileName": "Bundle/admin.css",
+  //  "inputFiles": [
+  //    "Admin/**/*.css"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "Bundle/admin.js",
+  //  "inputFiles": [
+  //    "Admin/**/*.js"
+  //  ]
+  //},
+]

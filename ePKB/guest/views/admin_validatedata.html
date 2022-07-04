@@ -1,0 +1,91 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html'"></ng-include>
+        <h2>
+            Validasi Data
+        </h2>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4><strong>Data Wajib Pajak / Pemilik Kendaraan</strong></h4>
+                <br />
+                <ng-include src="'/guest/views/shared_userinfo.html'"></ng-include>
+            </div>
+            <div class="col-md-6 text-center">
+                <img class="img-thumbnail" src="{{resources.Images.ktp.Path}}" />
+                <br />
+                Lampiran KTP
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4><strong>Data Kendaraan</strong></h4>
+                <br />
+               <ng-include src="'/guest/views/shared_vehicleinfo.html'"></ng-include>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <img class="img-thumbnail" src="{{resources.Images.stnk.Path}}" />
+                    <br />
+                    Lampiran STNK
+                </div>
+                <br />
+                <div class="text-center">
+                    <img class="img-thumbnail" src="{{resources.Images.ssp.Path}}" />
+                    <br />
+                    Lampiran Bukti Setor pajak tahun terakhir
+                </div>
+                <br />
+                <div class="text-center">
+                    <img class="img-thumbnail" src="{{resources.Images.bpkb.Path}}" />
+                    <br />
+                    Lampiran BPKB
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Validasi Rincian Biaya</h4>
+                <ng-include src="'/guest/views/shared_taxcomponent.html'"></ng-include>
+            </div>
+            <div class="col-md-6">
+                <form ng-submit="appService.sendNotification(resources.Id, a)">
+                    <p>Beritahu wajib pajak (pembayar) kekurangan biaya dan administrasi :</p>
+                    <textarea class="form-control" rows="4" ng-model="a" required></textarea>
+                    <br>
+                    <center>
+                        <button class="btn btn-md btn-blue">KIRIM PEMBERITAHUAN</button>
+                    </center>
+                </form>
+                <br />
+                <br />
+
+                <h4>Ubah Status</h4>
+                <div class="alert alert-info">
+                    Kembalikan status proses pembayaran pajak bila diperlukan untuk memberi kesempatan user memperbaiki dokumen persyaratan.
+                </div>
+                <br />
+                <div class="group">
+                    <select ng-model="resources.NewStatus">
+                        <option value="">PILIH STATUS</option>
+                        <option value="{{appService.status_upload}}">{{appService.status_upload}}</option>
+                    </select>
+                    <span class="bar"></span>
+                    <label>Status</label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="alert alert-warning">
+            <input type="checkbox" style="float: left; position: relative; left: -100px; margin-right: -180px;" ng-model="checked">
+            <strong>Saya telah memeriksa dan memastikan</strong> bahwa semua data diatas adalah benar & sesuai.
+        </div>
+        <br />
+        <div>
+            <button class="btn btn-default pull-left">BATAL</button>
+            <button class="btn btn-success pull-right" ng-click="validate(v_user, v_vehicle, resources, checked, resources.NewStatus)">{{resources.NewStatus? 'UBAH STATUS' : 'SELESAI'}}</button>
+        </div>
+    </div>
+</div>

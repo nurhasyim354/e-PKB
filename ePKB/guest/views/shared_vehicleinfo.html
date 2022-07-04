@@ -1,0 +1,85 @@
+﻿<div class="table-responsive">
+    <table class="table tb-no-border">
+        <tbody>
+            <tr ng-if="resources.UserProfile.IsValidate">
+                <td></td>
+                <td></td>
+                <td class="tb-center"><strong>telah diperiksa</strong></td>
+            </tr>
+            <tr>
+                <td>Nomor Polisi</td>
+                <td>{{resources.Vehicle.PoliceNumber}}</td>
+                <td width="10%" ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[0]"></td>
+            </tr>
+            <tr>
+                <td>Merk</td>
+                <td>{{resources.Vehicle.Merk}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[1]"></td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>{{resources.Vehicle.Type}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[2]"></td>
+            </tr>
+            <tr>
+                <td>Jenis</td>
+                <td>{{resources.Vehicle.Category}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[3]"></td>
+            </tr>
+            <tr>
+                <td>Model</td>
+                <td>{{resources.Vehicle.Model}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[4]"></td>
+            </tr>
+            <tr>
+                <td>Tahun Pembuatan</td>
+                <td>{{resources.Vehicle.AssembleYear}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[5]"></td>
+            </tr>
+            <tr>
+                <td>Bahan Bakar</td>
+                <td>{{resources.Vehicle.FuelType}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[6]"></td>
+            </tr>
+            <tr>
+                <td>Isi Silinder</td>
+                <td>{{resources.Vehicle.Cylinder}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[7]"></td>
+            </tr>
+            <tr>
+                <td>Nomor Mesin</td>
+                <td>{{resources.Vehicle.EngineNumber}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[8]"></td>
+            </tr>
+            <tr>
+                <td>Nomor Rangka</td>
+                <td>{{resources.Vehicle.BodyNumber}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[9]"></td>
+            </tr>
+            <tr>
+                <td>Wilayah Administrasi</td>
+                <td>
+                    {{resources.Vehicle.Region.Name}}
+                    <br />
+                    Provinsi {{resources.Vehicle.Region.Province.Name}}
+                </td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[10]"></td>
+            </tr>
+            <tr>
+                <td>Warna</td>
+                <td>{{resources.Vehicle.Color}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[11]"></td>
+            </tr>
+            <tr>
+                <td>Warna TNKB</td>
+                <td>{{resources.Vehicle.TNKBColor}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[12]"></td>
+            </tr>
+            <tr>
+                <td>Tanggal Berlaku STNK</td>
+                <td>{{resources.ExpireDate | amUtc |amLocal |amDateFormat :constant.dateFormat}}</td>
+                <td ng-if="resources.Vehicle.IsValidate"><input type="checkbox" name="" ng-model="v_vehicle[13]"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

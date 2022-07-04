@@ -1,0 +1,31 @@
+﻿<table class="table tb-no-border">
+    <tr ng-if="resources.UserProfile.IsValidate">
+        <td></td>
+        <td></td>
+        <td class="tb-center"><strong>telah diperiksa</strong></td>
+    </tr>
+    <tr>
+        <td>NIK</td>
+        <td>{{resources.UserProfile.NIK}}</td>
+        <td ng-if="resources.UserProfile.IsValidate"><input type="checkbox" ng-model="v_user[0]"></td>
+    </tr>
+    <tr>
+        <td>NAMA</td>
+        <td>{{resources.UserProfile.FirstName}}</td>
+        <td ng-if="resources.UserProfile.IsValidate"><input type="checkbox"  ng-model="v_user[1]"></td>
+    </tr>
+    <tr>
+        <td>ALAMAT</td>
+        <td>{{resources.UserProfile.Address}}</td>
+        <td ng-if="resources.UserProfile.IsValidate"><input type="checkbox"  ng-model="v_user[2]"></td>
+    <tr>
+        <td>NOMOR TELP/ HP</td>
+        <td>{{resources.UserProfile.Contact}}</td>
+        <td ng-if="resources.UserProfile.IsValidate"><input type="checkbox" ng-model="v_user[3]"></td>
+    </tr>
+    <tr>
+        <td>EMAIL</td>
+        <td>{{resources.UserProfile.Email}}</td>
+        <td ng-if="resources.UserProfile.IsValidate"><input type="checkbox"  ng-model="v_user[4]"></td>
+    </tr>
+</table>

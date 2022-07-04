@@ -1,0 +1,71 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h3>
+                    Profile Pengguna
+                </h3>
+                <ng-include src="'/guest/views/shared_userinfo.html?v=constant.ver'"></ng-include>
+            </div>
+            <div class="col-md-6">
+                <h3>Kendaraan terdaftar</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="tb-center">No. Polisi</th>
+                            <th class="tb-center">Model</th>
+                            <th class="tb-center">Merk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="a in resources.Vehicles | filter:key | itemsPerPage:10">
+                            <td>{{a.PoliceNumber}}</td>
+                            <td>{{a.Model}}</td>
+                            <td>{{a.Merk}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <h3>
+           History Pembayaran Pajak
+        </h3>
+        <div class="table-responsive" style="font-size:small">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="tb-center">No. Registrasi</th>
+                        <th class="tb-center">Tanggal</th>
+                        <th class="tb-center">No. Polisi</th>
+                        <th class="tb-center">Jenis</th>
+                        <th class="tb-center">Status</th>
+                        <th class="tb-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="a in resources.TaxPayments | filter:key | itemsPerPage:10">
+                        <td>{{a.RegNumber}}</td>
+                        <td>{{a.CreateDate | amUtc |amLocal |amDateFormat: constant.dateFormat}}</td>
+                        <td>{{a.Vehicle.PoliceNumber}}</td>
+                        <td>{{a.Vehicle.Model}}</td>
+                        <td>
+                           {{a.Status}}
+                        </td>
+                        <td class="tb-center">
+                            <button ng-if="a.Status == appService.status_upload" class="btn btn-warning" ng-click="do(a)">UPLOAD</button>
+                            <button ng-if="a.Status == appService.status_validateData" class="btn btn-warning" ng-click="do(a)">DETAIL</button>
+                            <button ng-if="a.Status == appService.status_waitForPayment" class="btn btn-success" ng-click="do(a)">PEMBAYARAN</button>
+                            <button ng-if="a.Status == appService.status_confirmPayment" class="btn btn-primary" ng-click="do(a)">DETAIL</button>
+                            <button ng-if="a.Status == appService.status_print" class="btn btn-success" ng-click="do(a)">AMBIL BUKTI</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <dir-pagination-controls></dir-pagination-controls>
+        </div>
+    </div>
+</div>

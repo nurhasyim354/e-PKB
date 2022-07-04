@@ -1,0 +1,26 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <div class="row">
+            <div class="col-md-4 col-md-push-4">
+                <h3>Reset Password</h3>
+                <br />
+                <br />
+                <form name="form" ng-submit="passwordReset(model)">
+                    <div class="group">
+                        <input type="password" ng-model="model.Password" required>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <div class="group">
+                        <input type="password" ng-model="model.PasswordConfirm" required>
+                        <span class="bar"></span>
+                        <label>Konfirmasi Password Baru</label>
+                    </div>
+                    <br />
+                    <input type="submit" class="btn btn-primary" value="Reset" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

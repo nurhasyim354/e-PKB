@@ -1,0 +1,46 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html'"></ng-include>
+        <br />
+        <ng-include src="'/guest/views/shared_breadcrumb.html'"></ng-include>
+        <br />
+        <div class="text-center">
+            <p>
+                <strong>
+                    Terima kasih telah ikut berperan membangun negeri dengan taat membayar pajak.
+                </strong>
+            </p>
+            <br />
+            <div ng-if="resources.Status == appService.status_print">
+                <p>
+                    Gunakan QR Code atau masukkan nomor registrasi pembayaran pajak berikut <strong>{{resources.RegNumber}}</strong>
+                    di Kantor Samsat terdekat untuk mengambil bukti pembayaran Pajak Kendaraan
+                </p>
+                <br />
+                <img src="{{resources.Images.qrcode.Path}}" class="img-thumbnail" style="width:300px;height:300px" />
+                <br />
+                <br />
+            </div>
+            <div class="alert alert-info text-center" ng-if="resources.Status != appService.status_print">
+                Mohon menunggu, saat ini kami sedang memastikan jumlah dana yang dibayarkan untuk pengurusan Pajak kendaraan berikut :
+                <br />
+                <br />
+                <strong>
+                    No. Registrasi : {{resources.RegNumber}}<br />
+                    No. Polisi : {{resources.Vehicle.PoliceNumber}}<br />
+                    Pemilik Kendaraan : {{resources.UserProfile.FirstName}}<br />
+                </strong>
+                <br />
+                Telah sesuai dan telah diterima.
+                <br />
+                <br />
+                Anda akan segera dikabari melalui email setelah proses konfirmasi pembayaran selesai.
+            </div>
+           
+        </div>
+        <br />
+        <div class="text-center">
+            <a class="btn btn-lg btn-success" href="/">OK</a>
+        </div>
+    </div>
+</div>

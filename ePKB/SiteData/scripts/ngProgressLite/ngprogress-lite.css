@@ -1,0 +1,22 @@
+﻿.ngProgressLite {
+	pointer-events: none;
+    position:relative;
+}
+
+.ngProgressLiteBar {
+	background: #BC812F;
+	position: fixed;
+	z-index: 99998;
+	top: 0;
+	left: 0;
+	height: 3px;
+}
+
+.ngProgressLite .ngProgressLiteBarShadow {
+	display: block;
+	position: absolute;
+	right: 0px;
+	width: 100px;
+	height: 100%;
+	opacity: 1;
+}

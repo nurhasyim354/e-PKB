@@ -1,0 +1,235 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <ng-include src="'/guest/views/shared_breadcrumb.html'"></ng-include>
+        <br />
+        <div class="alert alert-info text-center" ng-if="!register && !authService.authentication.isAuth">
+            <p ng-if="!emailExist">Kami membuat ini sangat sederhana, Cukup ketik email anda sebagai langkah awal. </p>
+            <p ng-if="emailExist">Kami mendeteksi email anda pernah digunakan. Coba ingat password anda agar anda tidak mengulang memasukkan data.</p>
+        </div>
+        <div class="alert alert-info text-center" ng-if="register && !authService.authentication.isAuth">
+            <p>Kami tidak menemukan email anda. Mohon luangkan sedikit waktu anda untuk mengisi data yang diperlukan.</p>
+        </div>
+        <br />
+        <div ng-if="(!authService.authentication.isAuth && !checkEmail) || (emailExist && !authService.authentication.isAuth)" class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form>
+                    <div class="group">
+                        <input type="email" ng-model="resources.UserProfile.Email">
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group" ng-if="emailExist">
+                        <input type="password" required ng-model="resources.Password">
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <button ng-if="!emailExist" class="btn btn-success btn-block" ng-click="doCheckEmail(resources.UserProfile.Email)">OK</button>
+                    <button ng-if="emailExist" class="btn btn-success btn-block" ng-click="login(resources)">Login</button>
+                    <br />
+                    <a ng-if="emailExist" href="/forgotpassword">Lupa password?</a>
+                    <br />
+                    <br />
+                    <button type="button" ng-if="emailExist" class="btn btn-default btn-block" ng-click="reset()">Gunakan Email Lain</button>
+                </form>
+            </div>
+        </div>
+
+        <form ng-if="register || authService.authentication.isAuth" ng-submit="save(resources)">
+            <h4>A. Data Wajib Pajak/ Pemilik Kendaraan</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="group">
+                        <input type="email" required ng-model="resources.UserProfile.Email">
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group" ng-if="!authService.authentication.isAuth">
+                        <input type="password" required ng-model="resources.Password">
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <div class="group" ng-if="!authService.authentication.isAuth">
+                        <input type="password" required ng-model="resources.ConfirmPassword">
+                        <span class="bar"></span>
+                        <label>Konfirmasi Password</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="group">
+                        <input type="text" required ng-model="resources.UserProfile.NIK">
+                        <span class="bar"></span>
+                        <label>NIK</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required ng-model="resources.UserProfile.FirstName">
+                        <span class="bar"></span>
+                        <label>Nama Lengkap</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="group">
+                        <input type="text" required ng-model="resources.UserProfile.Address">
+                        <span class="bar"></span>
+                        <label>Alamat Lengkap</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required ng-model="resources.UserProfile.Contact">
+                        <span class="bar"></span>
+                        <label>Nomor HP</label>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="alert alert-info" ng-if="!authService.authentication.isAuth">
+                Email dan password diperlukan untuk mengirim notifikasi dan merekam data anda untuk melakukan pembayaran berikutnya
+            </div>
+            <br />
+            <div ng-if="!authService.authentication.isAuth">
+                <button class="btn btn-lg btn-green pull-right">
+                    LANJUT
+                </button>
+            </div>
+        </form>
+        <form ng-submit="save(resources)" ng-if="authService.authentication.isAuth">
+            <h4>B. Data Kendaraan</h4>
+            <div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-success" ng-click="resources.Vehicle = {}; newVehicle = true;">KENDARAAN BARU</button>
+                    </div>
+                    <div class="col-md-6" ng-if="resources.UserProfile.Vehicles.length > 0">
+                        <div class="group" ng-if="resources.UserProfile.Vehicles.length > 0">
+                            <select ng-options="a.PoliceNumber for a in resources.UserProfile.Vehicles track by a.Id" ng-model="selectedVehicle" ng-change="openVehicle(selectedVehicle);"></select>
+                            <span class="bar"></span>
+                            <label>Pilih dari daftar kendaraan</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div ng-if="resources.Vehicle.IsProcessed" class="alert  alert-danger text-center">
+                    Pembayaran pajak tahun ini untuk kendaraan dengan nomor polisi {{resources.Vehicle.PoliceNumber}} telah diproses. 
+                    <br />Silahkan ke halaman profil untuk melihat statusnya.
+                    <br />
+                    <br />
+                    <a class="btn btn-primary" href="/profile">PROFIL</a>
+                </div>
+                <br />
+                <div class="row" ng-if="newVehicle || resources.Vehicle || resources.UserProfile.Vehicles.length == 0">
+                    <div class="col-md-4">
+                        <div class="group">
+                            <input type="text" required ng-model="resources.Vehicle.PoliceNumber">
+                            <span class="bar"></span>
+                            <label>Nomor Polisi</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.Merk" required>
+                            <span class="bar"></span>
+                            <label>Merk</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.Type" required>
+                            <span class="bar"></span>
+                            <label>Type</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.Category" required>
+                            <span class="bar"></span>
+                            <label>Jenis</label>
+                        </div>
+                        <div class="group">
+                            <select ng-options="a for a in appService.Option.Models" ng-model="resources.Vehicle.Model"  required></select>
+                            <span class="bar"></span>
+                            <label>Model</label>
+                        </div>
+                        <div class="group">
+                            <select ng-options="a for a in appService.Option.AssembleYears" ng-model="resources.Vehicle.AssembleYear" required></select>
+                            <span class="bar"></span>
+                            <label>Tahun Pembuatan</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="group">
+                            <select ng-options="a for a in appService.Option.Cylinders" ng-model="resources.Vehicle.Cylinder" required ></select>
+                            <span class="bar"></span>
+                            <label>Isi Silinder</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.BodyNumber" required>
+                            <span class="bar"></span>
+                            <label>Nomor Rangka</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.EngineNumber" required>
+                            <span class="bar"></span>
+                            <label>Nomor Mesin</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.Color" required>
+                            <span class="bar"></span>
+                            <label>Warna</label>
+                        </div>
+                        <div class="group">
+                            <select ng-options="a for a in appService.Option.FuelTypes" required ng-model="resources.Vehicle.FuelType"></select>
+                            <span class="bar"></span>
+                            <label>Bahan Bakar</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.TNKBColor" required>
+                            <span class="bar"></span>
+                            <label>Warna TNKB</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.RegistrationYear">
+                            <span class="bar"></span>
+                            <label>Tahun Registrasi</label>
+                        </div>
+                        <div class="group">
+                            <input type="text" ng-model="resources.Vehicle.BPKBNo" required>
+                            <span class="bar"></span>
+                            <label>Nomor BPKB</label>
+                        </div>
+                        <div class="group">
+                            <input class="form-control"
+                                   moment-picker
+                                   format="YYYY-MM-DD"
+                                   placeholder="Tanggal Berlaku STNK"
+                                   start-view="month"
+                                   max-view="day"
+                                   ng-model="resources.Vehicle.ExpireSTNKDate"
+                                   required />
+                            <span class="bar"></span>
+                            <label></label>
+                        </div>
+                        <div class="group">
+                            <select ng-options="a.Name for a in appService.Provinces" ng-model="resources.Vehicle.Province" required></select>
+                            <span class="bar"></span>
+                            <label>Provinsi</label>
+                        </div>
+                        <div class="group">
+                            <select ng-options="a.Name for a in resources.Vehicle.Province.Regions" ng-model="resources.Vehicle.Region" required></select>
+                            <span class="bar"></span>
+                            <label>Kabupaten/Kota Administrasi</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <button class="btn btn-lg btn-green pull-right" ng-if="!resources.Vehicle.IsProcessed">
+                        LANJUT
+                    </button>
+                    <button class="btn btn-lg btn-green pull-right" ng-if="resources.Vehicle.IsProcessed">
+                        SIMPAN
+                    </button>
+                    <a href="/" class="btn btn-lg btn-default pull-left">
+                        BATAL
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

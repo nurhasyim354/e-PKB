@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePKB", "ePKB\ePKB.csproj", "{4FF78E1B-3BB4-4F71-AEE6-37EA11938C8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePKBModel", "ePKBModel\ePKBModel.csproj", "{897F4F5A-6EE1-41DB-9F1B-D4C64F59F41C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePKB.PrintStation", "ePKB.PrintStation\ePKB.PrintStation.csproj", "{99D4B666-F234-4D59-B0F3-2A928BE3A63E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FF78E1B-3BB4-4F71-AEE6-37EA11938C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FF78E1B-3BB4-4F71-AEE6-37EA11938C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FF78E1B-3BB4-4F71-AEE6-37EA11938C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FF78E1B-3BB4-4F71-AEE6-37EA11938C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{897F4F5A-6EE1-41DB-9F1B-D4C64F59F41C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897F4F5A-6EE1-41DB-9F1B-D4C64F59F41C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897F4F5A-6EE1-41DB-9F1B-D4C64F59F41C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897F4F5A-6EE1-41DB-9F1B-D4C64F59F41C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D4B666-F234-4D59-B0F3-2A928BE3A63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D4B666-F234-4D59-B0F3-2A928BE3A63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D4B666-F234-4D59-B0F3-2A928BE3A63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D4B666-F234-4D59-B0F3-2A928BE3A63E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC380BEB-D2D7-4823-BFEF-B1E2DB38B2E3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,106 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html'"></ng-include>
+        <ng-include src="'/guest/views/shared_breadcrumb.html'"></ng-include>
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><strong>Identitas Pemilik</strong></h4>
+                    <br />
+                    <ng-include src="'/guest/views/shared_userinfo.html'"></ng-include>
+                </div>
+                <div class="col-md-6">
+                    <h4><strong>Status Pengurusan Pajak</strong></h4>
+                    <br />
+                    <div class="alert alert-warning">
+                        <center><strong> {{resources.Status}}</strong></center>
+                        <br />
+                        <div ng-if="resources.Status == appService.status_validateData">
+                            Saat ini petugas kami sedang memastikan data anda sesuai dengan dokumen yang diunggah. Kami akan memberitahu anda melalui email setelah proses ini selesai.
+                        </div>
+                        <div ng-if="resources.Status == appService.status_waitForPayment">
+                            Tinggal selangkah lagi!
+                            <br />
+                            Silahkan lakukan pembayaran dan upload bukti transfer melalui halaman ini.
+                        </div>
+                        <div ng-if="resources.Status == appService.status_confirmPayment">
+                            Terima kasih telah melakukan pembayaran!
+                            <br />
+                            Saat ini kami sedang memastikan pembayaran telah benar dan diterima oleh bank.
+                        </div>
+                        <div ng-if="resources.Status == appService.status_upload">
+                            Mohon maaf kami tidak dapat memvalidasi kebenaran data anda!
+                            <br />
+                            Silahkan upload ulang dokumen persyaratan yang sesuai.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><strong>Identitas Kendaraan</strong></h4>
+                    <br />
+                    <ng-include src="'/guest/views/shared_vehicleinfo.html'"></ng-include>
+                </div>
+                <div class="col-md-6">
+                    <h4><strong>Rincian Biaya</strong></h4>
+                    <br />
+                    <ng-include src="'/guest/views/shared_taxcomponent.html'"></ng-include>
+                    <br />
+                    <div ng-if="resources.Status == appService.status_waitForPayment">
+                        <h4><strong>Petunjuk Pembayaran</strong></h4>
+                        <br />
+                        <div class="alert alert-info">
+                            Silahkan lakukan pembayaran melalui bank transfer ke {{resources.Vehicle.Region.Province.Banks.length > 0 ? 'salah satu' : ''}} rekening bank berikut:
+                            <br />
+                            <br />
+                            <div ng-repeat="a in resources.Vehicle.Region.Province.Banks" style="margin-bottom:20px">
+                                <strong>
+                                    {{a.BankName}}<br />
+                                    No Rekening : {{a.AccountNumber}}<br />
+                                    A.n : {{a.AccountName}}<br />
+                                    Cabang {{a.Branch}}
+                                </strong>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="panel panel-info" flow-name="u_transferproof" flow-init flow-files-submitted="dragDrop(u_transferproof, 'proof')">
+                            <div class="panel-body">
+                                <h4>BUKTI PEMBAYARAN</h4>
+                                <br />
+                                <input type="file" class="form-control center-block" flow-btn />
+                                <br />
+                                <div class="text-left" style="margin-top:10px;height:300px" ng-mouseover="Images.proof.isVisible = true;" ng-mouseleave="Images.proof.isVisible = false;">
+                                    <div style="position:absolute; padding:10px;" ng-if="Images.proof.isVisible && Images.proof.Path">
+                                        <button type="button" class="btn-float btn btn-sm btn-danger" ng-click="deleteImage(Images.proof)"><i class="fa fa-trash"></i></button>
+                                    </div>
+                                    <img ng-if="Images.proof.Path" class="img-thumbnail" style="max-height:280px" src="{{Images.proof.Path}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <br />
+            <div class="alert alert-info text-center" ng-if="resources.Status == appService.status_validateData">
+                Terima kasih telah taat membayar pajak. 
+                <br />
+                Silahkan melakukan hal lain selagi kami masih melakukan verifikasi data anda. 
+                <br />
+                Kami akan memberitahukan langkah berikutnya melalui email setelah proses verifikasi data selesai.
+            </div>
+            <div ng-if="resources.Status == appService.status_waitForPayment">
+                <a href="/step2/{{sub}}" class="btn btn-lg btn-default pull-left">
+                    KEMBALI
+                </a>
+                <button ng-if="Images.proof.Path" ng-click="save()" class="btn btn-lg btn-green pull-right">
+                    SAYA TELAH MEMBAYAR
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAd0qcgLRJ2kOjdHOBrdWTygAAAAACAAAAAAAQZgAAAAEAACAAAAAXEo93y8gWvjeCSfs1xKGTstYt5OvLzNFg+uW4lpXqaAAAAAAOgAAAAAIAACAAAACcBu/G8YCyUCp/ruAyi7oTqqX7J2ueqezNlqw8NMxWgiAAAACrFyT/SQdPlF1atAONSN+6rgGoHdKi5eMScm3DSxexAkAAAACSdmrZIXGwZCIPfdVqwavrN/nwOgUh6tv5Z3WGl2UavSiCi5A8Va1ljt/U53ryWvUYB6aAitDrsZR25oizQDgC</EncryptedPassword>
+    <_PublishTargetUrl>ftp://digisoftsolution.xyz/httpdocs</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>11/30/2017 03:10:46</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>11/30/2017 03:10:46</publishTime>
+    </File>
+    <File Include="bin/ePKB.dll">
+      <publishTime>11/30/2017 08:28:51</publishTime>
+    </File>
+    <File Include="bin/ePKBModel.dll">
+      <publishTime>11/30/2017 03:42:31</publishTime>
+    </File>
+    <File Include="Bundle/guest.js">
+      <publishTime>11/30/2017 05:35:44</publishTime>
+    </File>
+    <File Include="Bundle/guest.min.js">
+      <publishTime>11/30/2017 05:35:44</publishTime>
+    </File>
+    <File Include="bundleconfig.json">
+      <publishTime>11/25/2017 06:06:10</publishTime>
+    </File>
+    <File Include="bundleconfig.json.bindings">
+      <publishTime>11/19/2017 11:54:32</publishTime>
+    </File>
+    <File Include="guest/email/datavalidated.html">
+      <publishTime>11/30/2017 00:05:13</publishTime>
+    </File>
+    <File Include="guest/email/master.html">
+      <publishTime>11/30/2017 05:24:26</publishTime>
+    </File>
+    <File Include="guest/email/notif_epkb.html">
+      <publishTime>11/30/2017 00:04:45</publishTime>
+    </File>
+    <File Include="guest/email/passwordReset.html">
+      <publishTime>11/28/2017 08:52:44</publishTime>
+    </File>
+    <File Include="guest/email/paymentreceived.html">
+      <publishTime>11/30/2017 00:05:57</publishTime>
+    </File>
+    <File Include="guest/email/register_epkb.html">
+      <publishTime>11/30/2017 00:06:23</publishTime>
+    </File>
+    <File Include="guest/views/404.html">
+      <publishTime>11/30/2017 03:46:49</publishTime>
+    </File>
+    <File Include="guest/views/admin_confirmpayment.html">
+      <publishTime>11/30/2017 02:09:10</publishTime>
+    </File>
+    <File Include="guest/views/admin_list.html">
+      <publishTime>11/30/2017 05:06:41</publishTime>
+    </File>
+    <File Include="guest/views/admin_validatedata.html">
+      <publishTime>11/30/2017 02:19:22</publishTime>
+    </File>
+    <File Include="guest/views/data.html">
+      <publishTime>11/30/2017 02:42:06</publishTime>
+    </File>
+    <File Include="guest/views/finish.html">
+      <publishTime>11/30/2017 05:36:32</publishTime>
+    </File>
+    <File Include="guest/views/payment.html">
+      <publishTime>11/30/2017 02:27:28</publishTime>
+    </File>
+    <File Include="guest/views/profile.html">
+      <publishTime>11/30/2017 01:21:03</publishTime>
+    </File>
+    <File Include="guest/views/shared_breadcrumb.html">
+      <publishTime>11/30/2017 02:30:53</publishTime>
+    </File>
+    <File Include="guest/views/shared_userinfo.html">
+      <publishTime>11/30/2017 02:21:48</publishTime>
+    </File>
+    <File Include="guest/views/shared_vehicleinfo.html">
+      <publishTime>11/30/2017 02:22:04</publishTime>
+    </File>
+    <File Include="guest/views/upload.html">
+      <publishTime>11/30/2017 02:28:35</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>11/30/2017 08:33:22</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>11/30/2017 03:10:38</publishTime>
+    </File>
+    <File Include="SiteData/img/bg.png">
+      <publishTime>11/19/2017 21:06:54</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/css/font-awesome.css">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/css/font-awesome.min.css">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/fontawesome-webfont.eot">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/fontawesome-webfont.svg">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/fontawesome-webfont.woff">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/fontawesome-webfont.woff2">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="SiteData/scripts/fontAwesome/fonts/FontAwesome.otf">
+      <publishTime>08/18/2017 09:37:11</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/30/2017 03:25:01</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+﻿.parallax {
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:50% 0;
+    background-color:#FFF;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+}

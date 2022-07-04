@@ -1,0 +1,63 @@
+﻿<strong>HASIL VALIDASI DATA PEMBAYARAN PAJAK ONLINE NOMOR: {noreg}</strong>
+<hr />
+Yth. Bapak/Ibu {name},
+<br /><br />
+Kami telah melakukan pengecekan dan validasi data yang anda kirimkan. 
+<br />
+Berdasarkan hasil pemeriksaan, kami menyatakan data anda atas pembayaran pajak kendaraan berikut :
+<br /><br />
+<table border="0" style="font-size:12px; font-family:Arial, sans-serif">
+    <tr>
+        <td>Nomor Polisi:&nbsp; </td>
+        <td>{nopol}</td>
+    </tr>
+    <tr>
+        <td>Jenis Kendaraan:&nbsp; </td>
+        <td>{vehicle_type}</td>
+    </tr>
+    <tr>
+        <td>Tanggal Daftar:&nbsp; </td>
+        <td>{date}</td>
+    </tr>
+</table>
+<br />
+Telah diperiksa dan sesuai dengan dokumen persyaratan. Anda dapat melanjutkan proses pembayaran.
+<br />
+<br />
+Berikut rincian pajak kendaraan anda :
+<br />
+<table border="0" style="font-size:12px; font-family:Arial, sans-serif">
+    <tr>
+        <td><b>Item</b></td>
+        <td><b>Pokok</b></td>
+        <td><b>Denda</b></td>
+    </tr>
+    <tr>
+        <td>PKB :&nbsp;</td>
+        <td>{pkb} </td>
+        <td>{pkb_add}</td>
+    </tr>
+    <tr>
+        <td>SWDKLLJ :&nbsp;</td>
+        <td>{swdkllj}</td>
+        <td>{swdkllj_add}</td>
+    </tr>
+    <tr>
+        <td>ADM STNK :&nbsp;</td>
+        <td>{admstnk} </td>
+        <td>{admstnk_add}</td>
+    </tr>
+    <tr>
+        <td>ADM TNKB :&nbsp;</td>
+        <td>{admtnkb} </td>
+        <td>{admtnkb_add}</td>
+    </tr>
+    <tr>
+        <td><b>JUMLAH</b></td>
+        <td colspan="2"><b>{total}:&nbsp; </b></td>
+    </tr>
+</table>
+<br />
+Untuk melihat status dan melanjutkan proses pengurusan pajak anda, silahkan klik link berikut:
+<a href="{url_profile}" target="_blank">{url_profile}</a>
+

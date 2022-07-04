@@ -1,0 +1,69 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <br />
+        <h3>Konfirmasi Pembayaran</h3>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h4><strong>Data Pemilik Kendaraan</strong></h4>
+                <ng-include src="'/guest/views/shared_userinfo.html'"></ng-include>
+                <br />
+                <br />
+                <h4><strong>Data Kendaraan</strong></h4>
+                <ng-include src="'/guest/views/shared_vehicleinfo.html'"></ng-include>
+                <br />
+                <br />
+                <h4>Ubah Status</h4>
+                <div class="alert alert-info">
+                    Kembalikan status proses pembayaran pajak bila diperlukan untuk memberi kesempatan user memperbaiki dokumen persyaratan maupun pembayaran
+                </div>
+                <br />
+                <br />
+                <div class="group">
+                    <select ng-model="resources.NewStatus">
+                        <option value="">PILIH STATUS</option>
+                        <option value="{{appService.status_upload}}">{{appService.status_upload}}</option>
+                        <option value="{{appService.status_validateData}}">{{appService.status_validateData}}</option>
+                        <option value="{{appService.status_waitForPayment}}">{{appService.status_waitForPayment}}</option>
+                    </select>
+                    <span class="bar"></span>
+                    <label>Status</label>
+                </div>
+              
+            </div>
+            <div class="col-md-6">
+                <h4><strong>Rincian Pajak</strong></h4>
+                <ng-include src="'/guest/views/shared_taxcomponent.html'"></ng-include>
+                <br />
+                <div class="alert alert-success text-center" ng-if="resources.Images.proof">
+                    <h4>TELAH DIBAYAR DENGAN BUKTI PEMBAYARAN BERIKUT</h4>
+                    <br />
+                    <img src="{{resources.Images.proof.Path}}" class="img-responsive">
+                </div>
+                <div class="alert alert-danger text-center" ng-if="!resources.Images.proof">
+                    BELUM DIBAYAR
+                </div>
+                <br />
+                <form ng-submit="appService.sendNotification(resources.Id, msg)">
+                    <p>Beritahu wajib pajak (pembayar) kekurangan biaya :</p>
+                    <textarea class="form-control" rows="4" ng-model="msg" required></textarea>
+                    <br>
+                    <center>
+                        <button class="btn btn-md btn-blue">KIRIM PEMBERITAHUAN</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="alert alert-warning">
+            <input type="checkbox" style="float: left; position: relative; left: -100px; margin-right: -180px;" ng-model="confirm">
+            <strong>Saya telah memeriksa dan memastikan</strong> bahwa dana telah diterima.
+        </div>
+        <br />
+        <div>
+            <a href="/admin/list" class="btn btn-default pull-left">BATAL</a>
+            <button ng-if="resources.Images.proof" class="btn btn-success pull-right" ng-click="save(confirm, resources.NewStatus)">{{resources.NewStatus ? 'UBAH STATUS' : 'SELESAI'}}</button>
+        </div>
+    </div>
+</div>

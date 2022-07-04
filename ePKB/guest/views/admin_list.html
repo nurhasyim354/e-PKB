@@ -1,0 +1,57 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <h3>
+                    Daftar Pembayaran pajak
+                </h3>
+            </div>
+            <div class="col-md-6">
+                <div class="group pull-right">
+                    <input type="text" required ng-model="key">
+                    <span class="bar"></span>
+                    <label>Pencarian</label>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" style="font-size:small">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="tb-center">No. Registrasi</th>
+                        <th class="tb-center">Tanggal</th>
+                        <th class="tb-center">No. Polisi</th>
+                        <th class="tb-center">Nama Pemilik</th>
+                        <th class="tb-center">Jenis Kendaraan</th>
+                        <th class="tb-center">Status</th>
+                        <th class="tb-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="a in resources | filter:key | itemsPerPage:10">
+                        <td>{{a.RegNumber}}</td>
+                        <td>{{a.CreateDate | amUtc |amLocal |amDateFormat: constant.dateFormat}}</td>
+                        <td>{{a.Vehicle.PoliceNumber}}</td>
+                        <td>{{a.UserProfile.FirstName}}</td>
+                        <td>{{a.Vehicle.Model}}</td>
+                        <td>
+                            {{a.Status}}
+                        </td>
+                        <td class="tb-center">
+                            <a ng-if="a.Status == appService.status_validateData" href="/admin/validatedata/{{a.Id}}" class="btn btn-md btn-warning">
+                                VALIDASI
+                            </a>
+                            <a ng-if="a.Status == appService.status_confirmPayment" href="/admin/confirmpayment/{{a.Id}}" class="btn btn-md btn-success">
+                                KONFIRMASI
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <dir-pagination-controls></dir-pagination-controls>
+        </div>
+    </div>
+</div>

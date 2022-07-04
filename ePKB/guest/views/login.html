@@ -1,0 +1,50 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-md-push-4">
+                <h3>Login</h3>
+                <br />
+                <form ng-submit="login(model)">
+                    <div class="group">
+                        <input type="email" ng-model="model.UserName" required>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group">
+                        <input type="password" ng-model="model.Password" required>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <br>
+                    <button class="btn btn-lg btn-success">Login</button>
+                </form>
+
+                <br />
+                <br />
+                <a href="" data-toggle="modal" data-target="#forgotmodal">Lupa Password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" role="dialog" id="forgotmodal" ng-controller="userController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Lupa Password</h3>
+            </div>
+            <div class="modal-body">
+                kami akan mengirim cara untuk mereset password anda ke email yang anda ketik di sini
+                <br /><br />
+                <form name="formResetPassword" ng-submit="passwordResetLink(model)">
+                    <input type="email" class="form-control" ng-model="model.UserName" placeholder="Email anda" required />
+                    <br />
+                    <input type="submit" class="btn btn-primary center-block" value="Kirim reset password link" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

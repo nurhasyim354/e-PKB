@@ -1,0 +1,21 @@
+﻿<div class="text-right">
+    <small ng-if="!authService.authentication.isAuth">
+        <a href="/login" class="btn btn-sm btn-success">Login</a>
+    </small>
+    <small ng-if="authService.authentication.isAuth">
+        <a href="/profile" class="btn btn-sm btn-primary"> Profil {{authService.authentication.user.Email}}</a>
+        <a href="/admin/list" ng-if="authService.isAdminLogin()" class="btn btn-success btn-sm">Halaman Admin</a>
+        <a class="btn btn-danger btn-sm" ng-click="authService.logout()">Logout</a>
+    </small>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            E-PKB
+            <small>{{isAdmin? 'Admin Portal' : 'Aplikasi Pembayaran Pajak Kendaraan Bermotor Online'}}</small>
+        </h1>
+    </div>
+</div>
+
+
+

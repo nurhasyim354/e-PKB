@@ -1,0 +1,75 @@
+﻿<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="tb-left">ITEM</th>
+            <th class="tb-center" width="120">POKOK</th>
+            <th class="tb-center" width="120">SANKSI ADM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>BBNKB</td>
+            <td ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.BBNKB">
+            </td>
+            <td  ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.BBNKB_add">
+            </td>
+            <td ng-if="resources.readonlyTC">XXXXXXXXXXXXXX</td>
+            <td ng-if="resources.readonlyTC">XXXXXXXXXXXXXX</td>
+        </tr>
+        <tr>
+            <td>PKB</td>
+            <td ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.PKB">
+            </td>
+            <td ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.PKB_add">
+            </td>
+            <td ng-if="resources.readonlyTC">{{resources.PKB |number}}</td>
+            <td ng-if="resources.readonlyTC">{{resources.PKB_add |number}}</td>
+        </tr>
+        <tr>
+            <td>SWDKLLJ</td>
+            <td  ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.SWDKLLJ">
+            </td>
+            <td  ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.SWDKLLJ_add">
+            </td>
+            <td ng-if="resources.readonlyTC">{{resources.SWDKLLJ |number}}</td>
+            <td ng-if="resources.readonlyTC">{{resources.SWDKLLJ_add |number}}</td>
+        </tr>
+        <tr>
+            <td>BIAYA ADM STNK</td>
+            <td ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.ADMSTNK">
+            </td>
+            <td ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.ADMSTNK_add">
+            </td>
+            <td ng-if="resources.readonlyTC">{{resources.ADMSTNK |number}}</td>
+            <td ng-if="resources.readonlyTC">{{resources.ADMSTNK_add |number}}</td>
+        </tr>
+        <tr>
+            <td>BIAYA ADM TNKB</td>
+            <td  ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.ADMTNKB">
+            </td>
+            <td  ng-if="!resources.readonlyTC">
+                <input type="number" class="form-control" ng-model="resources.ADMTNKB_add">
+            </td>
+            <td ng-if="resources.readonlyTC">{{resources.ADMTNKB |number}}</td>
+            <td ng-if="resources.readonlyTC">{{resources.ADMTNKB_add |number}}</td>
+        </tr>
+        <tr>
+            <td><strong>JUMLAH</strong></td>
+            <td>Rp <strong>{{(resources.PKB + resources.SWDKLLJ + resources.ADMSTNK + resources.ADMTNKB) | number}}</strong></td>
+            <td>Rp <strong>{{(resources.PKB_add + resources.SWDKLLJ_add + resources.ADMSTNK_add + resources.ADMTNKB_add) | number}}</strong></td>
+        </tr>
+        <tr>
+            <td><strong>JUMLAH DIBAYAR</strong></td>
+            <td colspan="2">Rp <strong>{{(resources.PKB + resources.SWDKLLJ + resources.ADMSTNK + resources.ADMTNKB + resources.PKB_add + resources.SWDKLLJ_add + resources.ADMSTNK_add + resources.ADMTNKB_add) | number}}</strong></td>
+        </tr>
+    </tbody>
+</table>

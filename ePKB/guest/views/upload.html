@@ -1,0 +1,84 @@
+﻿<div class="container base-container">
+    <div class="col-md-10 col-md-push-1 card">
+        <ng-include src="'/guest/views/header.html?v=constant.ver'"></ng-include>
+        <br />
+
+        <h2>Upload Dokumen</h2>
+        <ng-include src="'/guest/views/shared_breadcrumb.html'"></ng-include>
+        <br />
+        <div class="row">
+            <div class="col-md-6" flow-name="u_ktp" flow-init flow-files-submitted="dragDrop(u_ktp, 'ktp')">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <h4>KTP</h4>
+                        <br />
+                        <input type="file" class="form-control center-block" flow-btn />
+                        <br />
+                        <div class="text-left" style="margin-top:10px;height:300px;" ng-mouseover="Images.ktp.isVisible = true;" ng-mouseleave="Images.ktp.isVisible = false;">
+                            <div style="position:absolute; padding:10px;" ng-if="Images.ktp.isVisible && Images.ktp.Path">
+                                <button type="button" class="btn-float btn btn-sm btn-danger" ng-click="deleteImage(Images.ktp)"><i class="fa fa-trash"></i></button>
+                            </div>
+                            <img ng-if="Images.ktp.Path" class="img-thumbnail" src="{{Images.ktp.Path}}" style="max-height:280px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" flow-name="u_stnk" flow-init flow-files-submitted="dragDrop(u_stnk, 'stnk')">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <h4>STNK</h4>
+                        <br />
+                        <input type="file" class="form-control center-block" flow-btn />
+                        <br />
+                        <div class="text-left" style="margin-top:10px;height:300px" ng-mouseover="Images.stnk.isVisible = true;" ng-mouseleave="Images.stnk.isVisible = false;">
+                            <div style="position:absolute; padding:10px;" ng-if="Images.stnk.isVisible && Images.stnk.Path">
+                                <button type="button" class="btn-float btn btn-sm btn-danger" ng-click="deleteImage(Images.stnk)"><i class="fa fa-trash"></i></button>
+                            </div>
+                            <img ng-if="Images.stnk.Path" class="img-thumbnail" style="max-height:280px" src="{{Images.stnk.Path}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" flow-name="u_ssp" flow-init flow-files-submitted="dragDrop(u_ssp, 'ssp')">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <h4>BUKTI SETOR PAJAK TAHUN TERAKHIR</h4>
+                        <br />
+                        <input type="file" class="form-control center-block" flow-btn />
+                        <br />
+                        <div class="text-left" style="margin-top:10px;height:300px" ng-mouseover="Images.ssp.isVisible = true;" ng-mouseleave="Images.ssp.isVisible = false;">
+                            <div style="position:absolute; padding:10px;" ng-if="Images.ssp.isVisible && Images.ssp.Path">
+                                <button type="button" class="btn-float btn btn-sm btn-danger" ng-click="deleteImage(Images.ssp)"><i class="fa fa-trash"></i></button>
+                            </div>
+                            <img ng-if="Images.ssp.Path" class="img-thumbnail" style="max-height:280px" src="{{Images.ssp.Path}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" flow-name="u_bpkb" flow-init flow-files-submitted="dragDrop(u_bpkb, 'bpkb')">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <h4>BPKB</h4>
+                        <br />
+                        <input type="file" class="form-control center-block" flow-btn />
+                        <br />
+                        <div class="text-left" style="margin-top:10px;height:300px" ng-mouseover="Images.bpkb.isVisible = true;" ng-mouseleave="Images.bpkb.isVisible = false;">
+                            <div style="position:absolute; padding:10px;" ng-if="Images.bpkb.isVisible && Images.bpkb.Path">
+                                <button type="button" class="btn-float btn btn-sm btn-danger" ng-click="deleteImage(Images.bpkb)"><i class="fa fa-trash"></i></button>
+                            </div>
+                            <img ng-if="Images.bpkb.Path" class="img-thumbnail" style="max-height:280px" src="{{Images.bpkb.Path}}" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <div>
+            <a href="/step1" type="button" class="btn btn-lg btn-default pull-left">KEMBALI</a>
+            <button ng-if="!resources.Status || resources.Status == appService.status_upload" class="btn btn-lg btn-success pull-right" ng-click="save(Images)">LANJUT</button>
+        </div>
+    </div>
+</div>
+
+
